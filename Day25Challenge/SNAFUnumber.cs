@@ -30,7 +30,7 @@
             // The problem can be converted to a regular conversion from decimal to pental.
             string result = "";
 
-            // Leftmost character is either 1 or 2. First, determine this number an the number of characters:
+            // Leftmost character is either 1 or 2. First, determine this number and the number of characters:
             double x = Math.Log(dec) / Math.Log(5);
             int largestPowerOfFive = Convert.ToInt32(Math.Floor(Math.Log(dec) / Math.Log(5)));
             int power = Convert.ToInt32(Math.Pow(5, largestPowerOfFive));
@@ -58,10 +58,12 @@
             // The remainder as computed can be converted to a Pental base number with symbols '=', '-', '0', '1', '2', instead of the conventional 1, 2, 3, 4, 5.
             string pentalOfRemain = DecToPent(dec);
             string SNAFUofRemain = ConvertConventionalPentalSymbolsToSNAFUsymbols(pentalOfRemain);
+            // Add missing "=" symbols between SNAFU of the remain and the first symbol to match the total number of symbols.
             for (int i = 0; i < largestPowerOfFive - SNAFUofRemain.Length;i++)
             {
                 result += '=';
             }
+            // Addd the SNAFU of the remain.
             result += SNAFUofRemain;
             return result;
         }
