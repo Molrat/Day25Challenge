@@ -15,12 +15,12 @@ namespace UnitTestingSNAFU
             string SNAFU5 = "1";
             string SNAFU6 = "2";
             // Act
-            int decimal1 = SNAFUnumber.SNAFUtoDecimal(SNAFU1);
-            int decimal2 = SNAFUnumber.SNAFUtoDecimal(SNAFU2);
-            int decimal3 = SNAFUnumber.SNAFUtoDecimal(SNAFU3);
-            int decimal4 = SNAFUnumber.SNAFUtoDecimal(SNAFU4);
-            int decimal5 = SNAFUnumber.SNAFUtoDecimal(SNAFU5);
-            int decimal6 = SNAFUnumber.SNAFUtoDecimal(SNAFU6);
+            int decimal1 = SnafuDecimalConverser.SNAFUtoDecimal(SNAFU1);
+            int decimal2 = SnafuDecimalConverser.SNAFUtoDecimal(SNAFU2);
+            int decimal3 = SnafuDecimalConverser.SNAFUtoDecimal(SNAFU3);
+            int decimal4 = SnafuDecimalConverser.SNAFUtoDecimal(SNAFU4);
+            int decimal5 = SnafuDecimalConverser.SNAFUtoDecimal(SNAFU5);
+            int decimal6 = SnafuDecimalConverser.SNAFUtoDecimal(SNAFU6);
 
             // Assert
             Assert.Equal(1322, decimal1);
@@ -45,8 +45,8 @@ namespace UnitTestingSNAFU
             List<int> convertedToSNAFUandBack = new();
             foreach(int number in randomNumbers)
             {
-                string SNAFU = SNAFUnumber.DecimalToSNAFU(number);
-                int numberConvertedBack = SNAFUnumber.SNAFUtoDecimal(SNAFU);
+                string SNAFU = SnafuDecimalConverser.DecimalToSNAFU(number);
+                int numberConvertedBack = SnafuDecimalConverser.SNAFUtoDecimal(SNAFU);
                 convertedToSNAFUandBack.Add(numberConvertedBack);
             }
             // Assert

@@ -8,14 +8,26 @@
             return Compute(SNAFUnumbers);
         }
 
-        public static string Compute(List<string> snafuNumbers)
+        public static string Compute(List<string> snafuNumbers, bool pureSNAFUmath = true)
         {
-            int sum = 0;
-            foreach (string SNAFU in snafuNumbers)
+            if (pureSNAFUmath)
             {
-                sum += SNAFUnumber.SNAFUtoDecimal(SNAFU);
+                PureSNAFU pureSNAFU = new("0");
+                foreach (string SNAFU in snafuNumbers)
+                {
+                    pureSNAFU.AddOtherSNAFUnumber(SNAFU);
+                }
+                return pureSNAFU.ReturnAsString();
             }
-            return SNAFUnumber.DecimalToSNAFU(sum);
+            else
+            {
+                int sum = 0;
+                foreach (string SNAFU in snafuNumbers)
+                {
+                    sum += SnafuDecimalConverser.SNAFUtoDecimal(SNAFU);
+                }
+                return SnafuDecimalConverser.DecimalToSNAFU(sum);
+            }    
         }
     }
 }
